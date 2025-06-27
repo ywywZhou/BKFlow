@@ -1140,8 +1140,9 @@ const template = {
       }).then(response => response.data);
     },
     // api插件请求详情
-    loadUniformApiMeta({}, data) {
-      const { templateId, spaceId, meta_url, scope_type, scope_value } = data;
+    loadUniformApiMeta(state, data) {
+      const { spaceId, meta_url, scope_type, scope_value } = data;
+      const { template_id: templateId } = state;
       return axios.get(`/api/plugin_query/uniform_api/meta/${spaceId}/${templateId}/`, {
         params: {
           meta_url,
